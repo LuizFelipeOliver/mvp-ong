@@ -1,6 +1,15 @@
-import { defineConfig } from 'vite-plus';
+import { defineConfig, loadEnv } from "vite-plus";
 
-export default defineConfig({
-  fmt: {},
-  lint: {"jsPlugins":[{"name":"vite-plus","specifier":"vite-plus/oxlint-plugin"}],"rules":{"vite-plus/prefer-vite-plus-imports":"error"},"options":{"typeAware":true,"typeCheck":true}},
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), "");
+
+  return {
+    server: {
+      port: 5173,
+      strictPort: true,
+      proxy: {
+        "/api": `http://127.0.0.1:${process.env.PORT ?? env.PORT ?? 3001}`,
+      },
+    },
+  };
 });

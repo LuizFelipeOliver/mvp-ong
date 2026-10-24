@@ -1,8 +1,6 @@
-import "./style.css";
-
 document.querySelector("#app").innerHTML = `
   <main>
-    <p class="label">Projeto Integrador Extensionista II · Atividade 1</p>
+    <p>Projeto Integrador Extensionista II · Atividade 1</p>
     <h1>ONG</h1>
     <p>Uma base para conectar pessoas e transformar a comunidade.</p>
     <section aria-labelledby="connection-title">
